@@ -19,17 +19,20 @@ namespace APINVIBO.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public IActionResult Guardar(Invitado invitado)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _context.Invitados.Add(invitado);
                 _context.SaveChanges();
 
                 return RedirectToAction("Gracias");
             }
-
-            return View("Index", invitado);
+            catch (Exception ex)
+            {
+                return Content(ex.ToString());
+            }
         }
 
         public IActionResult Gracias()
