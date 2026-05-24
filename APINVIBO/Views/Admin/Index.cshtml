@@ -1,0 +1,83 @@
+﻿@model List<APINVIBO.Models.Invitado>
+
+@{
+    ViewData["Title"] = "Panel Admin";
+
+    var totalRegistros = Model.Count;
+    var totalAsistentes = Model.Count(x => x.Asistira);
+    var totalNoAsisten = Model.Count(x => !x.Asistira);
+    var totalNinos = Model.Sum(x => x.CantidadNinos);
+    var totalPersonas = totalAsistentes + totalNinos;
+}
+
+<div class="admin-page">
+
+    <div class="admin-header">
+        <h1>Panel Administrador</h1>
+        <p>Resumen de confirmaciones de asistencia</p>
+    </div>
+
+    <div class="admin-stats">
+
+        <div class="stat-card">
+            <h3>Total personas</h3>
+            <strong>@totalPersonas</strong>
+      
+        </div>
+
+        <div class="stat-card">
+            <h3>Adultos confirmados</h3>
+            <strong>@totalAsistentes</strong>
+            <span>Invitados que asistirán</span>
+        </div>
+
+
+        <div class="stat-card">
+            <h3>No asisten</h3>
+            <strong>@totalNoAsisten</strong>
+            <span>Invitados que no asistirán</span>
+        </div>
+
+    </div>
+
+    <div class="admin-table-card">
+
+        <h2>Lista de invitados</h2>
+
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Asiste</th>
+                      
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellido</td>
+                            <td>
+                                @if (item.Asistira)
+                                {
+                                    <span class="badge yes">Sí</span>
+                                }
+                                else
+                                {
+                                    <span class="badge no">No</span>
+                                }
+                            </td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>

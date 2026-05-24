@@ -1,0 +1,108 @@
+﻿@model APINVIBO.Models.Invitado
+
+@{
+    ViewData["Title"] = "Confirmar Asistencia";
+}
+
+<div class="rsvp-page">
+
+    <div class="rsvp-card">
+
+        <div class="form-section">
+
+            <div class="flower">🌸</div>
+
+            <h1>Confirmar Asistencia</h1>
+
+            <p class="subtitle">
+                Tu presencia es muy importante para nosotros 💕
+            </p>
+
+            <form action="/RSVP/Guardar" method="post">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label>Nombre</label>
+
+                        <input
+                            asp-for="Nombre"
+                            class="form-control"
+                            placeholder="Ingresa tu nombre" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Apellido</label>
+
+                        <input
+                            asp-for="Apellido"
+                            class="form-control"
+                            placeholder="Ingresa tu apellido" />
+                    </div>
+
+                </div>
+
+                <div class="mb-3 checkbox-box">
+
+                    <label>¿Asistirá?</label>
+
+                    <br />
+
+                    <input
+                        type="checkbox"
+                        asp-for="Asistira" />
+
+                    <span>Sí, asistiré</span>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-confirmar">
+
+                    ❤ Confirmar asistencia
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="gift-section">
+
+            <div class="heart-circle">
+                ♡
+            </div>
+
+            <h2>¡Gracias!</h2>
+
+            <p>
+                Estamos muy felices de compartir este día tan especial contigo.
+            </p>
+
+            <div class="gift-box">
+
+                <h4>🎁 Lista de regalos</h4>
+
+             
+
+                <a
+                    href="https://tusregalos.com"
+                    target="_blank">
+
+                    Ver lista de regalos
+
+                </a>
+
+            </div>
+
+            <div class="couple">
+                💑
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
