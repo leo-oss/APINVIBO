@@ -18,7 +18,7 @@ namespace APINVIBO.Controllers
             return View();
         }
 
-        [HttpPost]
+        
         [HttpPost]
         public IActionResult Guardar(Invitado invitado)
         {
