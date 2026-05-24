@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 COPY APINVIBO/APINVIBO.csproj APINVIBO/
@@ -7,7 +7,7 @@ RUN dotnet restore APINVIBO/APINVIBO.csproj
 COPY . .
 RUN dotnet publish APINVIBO/APINVIBO.csproj -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 COPY --from=build /app/publish .
